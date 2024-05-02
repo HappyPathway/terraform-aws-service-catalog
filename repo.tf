@@ -1,12 +1,4 @@
-module "repo" {
-  source  = "HappyPathway/repo/github"
-  version = "1.0.0"
-  name    = var.product_name
-
-}
-
-
-module "tfe-tools" {
+module "product_repo" {
   source                  = "HappyPathway/repo/github"
   github_codeowners_team  = var.product_owner
   github_repo_description = var.product_description
@@ -21,12 +13,12 @@ module "tfe-tools" {
   force_name = true
   secrets = [
     {
-      name  = "AWS_SECRET_ACCESS_KEY"
-      value = 
-    },
-    {
-      name  = "AWS_ACCESS_KEY_ID"
-      value = var.vault_app_role_secret_id
-    }
+        name = "AWS_SECRET_ACCESS_KEY",
+        value = aws_iam_access_key.build_user.secret,
+      },
+      {
+        name = "AWS_ACCESS_KEY_ID",
+        value = aws_iam_access_key.build_user.id,
+      }
   ]
 }
