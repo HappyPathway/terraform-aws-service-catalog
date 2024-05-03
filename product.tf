@@ -18,7 +18,7 @@ data "aws_servicecatalog_product" "product" {
 }
 
 locals {
-  product = var.create_product ? aws_servicecatalog_product.product : data.aws_servicecatalog_product.product
+  product = var.create_product ? one(aws_servicecatalog_product.product) : one(data.aws_servicecatalog_product.product)
 }
 
 

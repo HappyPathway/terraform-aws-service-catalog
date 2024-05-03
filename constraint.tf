@@ -16,8 +16,8 @@ resource "aws_iam_role" "launch_role" {
 
 resource "aws_servicecatalog_constraint" "constraint" {
   description  = var.constraint_description
-  portfolio_id = one(local.portfolio).id
-  product_id   = one(local.product).id
+  portfolio_id = local.portfolio.id
+  product_id   = local.product.id
   type         = "LAUNCH"
 
   parameters = jsonencode({

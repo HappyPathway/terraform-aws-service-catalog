@@ -11,5 +11,5 @@ data "aws_servicecatalog_portfolio" "portfolio" {
 }
 
 locals {
-  portfolio = var.create_portfolio ? aws_servicecatalog_portfolio.portfolio : data.aws_servicecatalog_portfolio.portfolio
+  portfolio = var.create_portfolio ? one(aws_servicecatalog_portfolio.portfolio) : one(data.aws_servicecatalog_portfolio.portfolio)
 }
