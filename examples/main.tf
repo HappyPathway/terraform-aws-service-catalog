@@ -15,7 +15,7 @@ module example_catalog_product {
     portfolio_name = "dev-terraform"
     s3_bucket = "terraform-service-catalog"
     s3_key = "test-s3-bucket"
-    product_owner = "CSVD_Users"
+    product_owner = "csvd_users"
     product_description = "test bucket for terraform service-catalog products"
     product_name = "test-s3-bucket"
     product_owner_org = "CSVD"

@@ -1,7 +1,7 @@
 resource "aws_servicecatalog_constraint" "example" {
   description  = var.constraint_description
-  portfolio_id = local.portfolio.id
-  product_id   = local.product.id
+  portfolio_id = one(local.portfolio).id
+  product_id   = one(local.product).id
   type         = "LAUNCH"
 
   parameters = jsonencode({
