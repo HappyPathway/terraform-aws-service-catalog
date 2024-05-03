@@ -5,7 +5,7 @@ resource "aws_servicecatalog_product" "product" {
   type  = "EXTERNAL"
 
   provisioning_artifact_parameters {
-    template_url = "https://s3.amazonaws.com/${var.s3_bucket}/${var.s3_key}"
+    template_url = "https://s3.amazonaws.com/${var.s3_bucket}/${var.product_name}"
     type = "EXTERNAL"
     disable_template_validation = true
   }

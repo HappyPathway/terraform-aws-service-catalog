@@ -29,7 +29,7 @@ module "product_repo" {
     },
     {
       name = "s3_key",
-      value = var.s3_key
+      value = var.product_name
     }
   ]
   extra_files = [

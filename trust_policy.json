@@ -1,0 +1,29 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "GivePermissionsToServiceCatalog",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "servicecatalog.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:${partition}:iam::${account_id}:root"
+            },
+            "Action": "sts:AssumeRole",
+            "Condition": {
+                "StringLike": {
+                    "aws:PrincipalArn": [
+                        "arn:${partition}:iam::${account_id}:role/TerraformEngine/TerraformExecutionRole*",
+                        "arn:${partition}:iam::${account_id}:role/TerraformEngine/ServiceCatalogExternalParameterParserRole*",
+                        "arn:${partition}:iam::${account_id}:role/TerraformEngine/ServiceCatalogTerraformOSParameterParserRole*"
+                    ]
+                }
+            }
+        }
+    ]
+}

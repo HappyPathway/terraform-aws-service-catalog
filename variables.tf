@@ -35,7 +35,7 @@ variable "create_product" {
   default = true
 }
 
-variable "launch_role" {
+variable "launch_role_policy" {
   type = string
 }
 
@@ -65,7 +65,6 @@ variable "product_tags" {
 }
 
 variable "s3_bucket" {}
-variable "s3_key" {}
 variable "s3_tags" {
   type = map(string)
   default = {}
