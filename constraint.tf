@@ -3,7 +3,7 @@ resource "aws_iam_role" "launch_role" {
   assume_role_policy  = templatefile(
     "${path.module}/trust_policy.json",
     {
-      partion = local.partition,
+      partition = local.partition,
       account_id = local.account_id
     }
   )
