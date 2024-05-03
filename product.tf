@@ -20,3 +20,9 @@ data "aws_servicecatalog_product" "product" {
 locals {
   product = var.create_product ? aws_servicecatalog_product.product : data.aws_servicecatalog_product.product
 }
+
+
+resource "aws_servicecatalog_product_portfolio_association" "product_portfolio" {
+  portfolio_id = local.portfolio.id
+  product_id   = local.product.id
+}

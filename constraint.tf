@@ -23,6 +23,9 @@ resource "aws_servicecatalog_constraint" "constraint" {
   parameters = jsonencode({
     "RoleArn" : aws_iam_role.launch_role.arn
   })
+  depends_on = [ 
+    aws_servicecatalog_product_portfolio_association.product_portfolio 
+  ]
 }
 
 output launch_role {
