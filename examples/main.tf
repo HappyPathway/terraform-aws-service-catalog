@@ -36,3 +36,7 @@ module example_catalog_product {
     }
   )
 }
+
+output launch_role {
+  value = module.example_catalog_product.launch_role
+}
