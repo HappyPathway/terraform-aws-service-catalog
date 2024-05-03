@@ -18,7 +18,7 @@ module example_catalog_product {
     product_owner = "david.j.arnold.jr@census.gov"
     product_description = "test bucket for terraform service-catalog products"
     product_name = "test-s3-bucket"
-    product_owner_org = "arnol377"
+    product_owner_org = "CSVD"
     build_permissions_iam_doc = data.aws_iam_policy_document.s3_access
     s3_bucket_role = "service-catalog-s3"
     launch_role = "AWSReservedSSO_inf-admin-t2_4e0c6446aecbe4a0"
