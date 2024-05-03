@@ -58,6 +58,7 @@ variable "product_id" {
 }
 variable "product_name" {}
 variable "product_owner" {}
+variable "product_owner_org" {}
 variable "product_tags" {
   type = map(string)
   default = {}

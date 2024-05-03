@@ -6,6 +6,7 @@ module "product_repo" {
   source                  = "HappyPathway/repo/github"
   github_codeowners_team  = var.product_owner
   github_repo_description = var.product_description
+  repo_org                = var.product_owner_org
   name                    = "product-${var.product_name}"
   github_repo_topics = [
     "terraform",
