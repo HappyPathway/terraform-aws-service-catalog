@@ -5,7 +5,7 @@ resource "aws_servicecatalog_product" "product" {
   type  = "TERRAFORM_OPEN_SOURCE"
 
   provisioning_artifact_parameters {
-    template_url = local.template_url
+    template_url = "https://s3.amazonaws.com/${var.s3_bucket}/${var.s3_key}"
   }
   tags = var.product_tags
 }

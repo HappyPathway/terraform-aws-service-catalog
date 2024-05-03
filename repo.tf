@@ -1,7 +1,3 @@
-locals {
-  template_url = "https://s3.amazonaws.com/${var.s3_bucket}/${var.s3_key}"
-}
-
 module "product_repo" {
   source                  = "HappyPathway/repo/github"
   github_codeowners_team  = var.product_owner
@@ -24,6 +20,16 @@ module "product_repo" {
     {
       name  = "AWS_ACCESS_KEY_ID",
       value = aws_iam_access_key.build_user.id,
+    }
+  ]
+  vars = [
+    {
+      name = "s3_bucket",
+      value = var.s3_bucket
+    },
+    {
+      name = "s3_key",
+      value = var.s3_key
     }
   ]
   extra_files = [

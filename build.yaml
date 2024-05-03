@@ -31,4 +31,4 @@ jobs:
       - name: Deploy code to s3 bucket
         run: |
           zip -r ${{ github.event.repository.name }}.zip *
-          aws s3 cp ${{ github.event.repository.name }}.zip s3://${{ vars.s3_bucket }}/${{ github.event.repository.name }}.zip
+          aws s3 cp ${{ github.event.repository.name }}.zip s3://${{ vars.s3_bucket }}/${{ vars.s3_key }}
