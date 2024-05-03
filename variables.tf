@@ -9,7 +9,7 @@
 #     "portfolio_id",
 #     "portfolio_name",
 #     "portfolio_provider",
-#     "principles",
+#     "principals",
 #     "product_description",
 #     "product_id",
 #     "product_name",
@@ -20,6 +20,7 @@
 variable "account_shares" {
   type        = list(string)
   description = "Which organizational AWS accounts should we share this with?"
+  default = []
 }
 
 
@@ -34,26 +35,38 @@ variable "create_product" {
   default = true
 }
 
-variable "launch_role" {}
+variable "launch_role" {
+  type = string
+}
 
-variable "portfolio_description" {}
-
-variable "principles" {
+variable "principals" {
   type        = list(string)
-  description = "List of principles to share this with"
+  description = "List of principals to share this with"
+  default = []
 }
 
 variable "portfolio_name" {}
 variable "portfolio_provider" {}
-variable "portfolio_id" {}
+variable "portfolio_description" {}
+variable "portfolio_id" {
+  default = null
+}
 
 variable "product_description" {}
-variable "product_id" {}
+variable "product_id" {
+  default = null
+}
 variable "product_name" {}
 variable "product_owner" {}
 variable "product_tags" {
   type = map(string)
+  default = {}
 }
 
 variable "s3_bucket" {}
 variable "s3_key" {}
+variable "s3_tags" {
+  type = map(string)
+  default = {}
+}
+variable "s3_bucket_role" {}
