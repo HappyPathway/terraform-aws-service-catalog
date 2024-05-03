@@ -2,10 +2,12 @@ resource "aws_servicecatalog_product" "product" {
   count = var.create_product ? 1 : 0
   name  = var.product_name
   owner = var.product_owner
-  type  = "TERRAFORM_OPEN_SOURCE"
+  type  = "EXTERNAL"
 
   provisioning_artifact_parameters {
     template_url = "https://s3.amazonaws.com/${var.s3_bucket}/${var.s3_key}"
+    type = "EXTERNAL"
+    disable_template_validation = true
   }
   tags = var.product_tags
 }
