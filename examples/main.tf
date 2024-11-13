@@ -31,7 +31,6 @@ module example_catalog_product {
     build_permissions_iam_doc = data.aws_iam_policy_document.s3_access
     s3_bucket_role = "service-catalog-s3"
     account_shares = [
-      "354680860571"
     ]
     launch_role_policy = templatefile("${path.root}/s3_policy.json",
     {

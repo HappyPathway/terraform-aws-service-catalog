@@ -1,6 +1,6 @@
 #Artifact Bucket
 resource "aws_s3_bucket" "bucket" {
-  bucket_prefix = regex("[a-z0-9.-]+", lower(var.s3_bucket))
+  bucket = var.s3_bucket
   tags          = var.s3_tags
   force_destroy = true
 }
