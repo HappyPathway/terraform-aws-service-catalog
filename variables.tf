@@ -59,11 +59,11 @@ variable "portfolio" {
 variable "products" {
   type = list(object({
     description = string
-    id          = string
+    id          = optional(string)
     name        = string
     owner       = string
     owner_org   = string
-    tags        = map(string)
+    tags        = optional(map(string), {})
   }))
   default = null
 }
