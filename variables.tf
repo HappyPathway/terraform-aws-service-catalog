@@ -45,19 +45,15 @@ variable "principals" {
   description = "List of principals to share this with"
   default     = []
 }
+
 variable "portfolio" {
   type = object({
     name        = string
     provider    = string
     description = string
-    id          = string
-  })
-  default = {
-    name        = null
-    provider    = null
-    description = null
     id          = optional(string, null)
-  }
+  })
+  default = null
 }
 
 variable "products" {
