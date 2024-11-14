@@ -1,16 +1,19 @@
 resource "aws_iam_role" "launch_role" {
-  name                = "SCLaunch-${var.product_name}"
-  assume_role_policy  = templatefile(
+  name = "SCLaunch-${var.portfolio.name}"
+  assume_role_policy = templatefile(
     "${path.module}/trust_policy.json",
     {
-      partition = local.partition,
+      partition  = local.partition,
       account_id = local.account_id
     }
   )
-  
-  inline_policy {
-    name   = var.product_name
-    policy = var.launch_role_policy
+
+  dynamic "inline_policy" {
+    for_each = var.products
+    content {
+      name   = inline_policy.value.name
+      policy = var.launch_role_policy
+    }
   }
 }
 
@@ -23,11 +26,11 @@ resource "aws_servicecatalog_constraint" "constraint" {
   parameters = jsonencode({
     "RoleArn" : aws_iam_role.launch_role.arn
   })
-  depends_on = [ 
-    aws_servicecatalog_product_portfolio_association.product_portfolio 
+  depends_on = [
+    aws_servicecatalog_product_portfolio_association.product_portfolio
   ]
 }
 
-output launch_role {
+output "launch_role" {
   value = aws_iam_role.launch_role
 }

@@ -5,8 +5,8 @@ resource "aws_servicecatalog_product" "product" {
   type  = "EXTERNAL"
 
   provisioning_artifact_parameters {
-    template_url = "https://s3.amazonaws.com/${var.s3_bucket}/${var.product_name}"
-    type = "EXTERNAL"
+    template_url                = "https://s3.amazonaws.com/${var.s3_bucket}/${var.product_name}"
+    type                        = "EXTERNAL"
     disable_template_validation = true
   }
   tags = var.product_tags
@@ -23,6 +23,6 @@ locals {
 
 
 resource "aws_servicecatalog_product_portfolio_association" "product_portfolio" {
-  portfolio_id = local.portfolio.id
+  portfolio_id = var.portfolio_id
   product_id   = local.product.id
 }

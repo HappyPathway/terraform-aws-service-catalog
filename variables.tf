@@ -20,7 +20,7 @@
 variable "account_shares" {
   type        = list(string)
   description = "Which organizational AWS accounts should we share this with?"
-  default = []
+  default     = []
 }
 
 
@@ -43,31 +43,38 @@ variable "principal_type" {}
 variable "principals" {
   type        = list(string)
   description = "List of principals to share this with"
-  default = []
+  default     = []
+}
+variable "portfolio" {
+  type = object({
+    name        = string
+    provider    = string
+    description = string
+    id          = string
+  })
+  default = {
+    name        = null
+    provider    = null
+    description = null
+    id          = optional(string, null)
+  }
 }
 
-variable "portfolio_name" {}
-variable "portfolio_provider" {}
-variable "portfolio_description" {}
-variable "portfolio_id" {
+variable "products" {
+  type = list(object({
+    description = string
+    id          = string
+    name        = string
+    owner       = string
+    owner_org   = string
+    tags        = map(string)
+  }))
   default = null
-}
-
-variable "product_description" {}
-variable "product_id" {
-  default = null
-}
-variable "product_name" {}
-variable "product_owner" {}
-variable "product_owner_org" {}
-variable "product_tags" {
-  type = map(string)
-  default = {}
 }
 
 variable "s3_bucket" {}
 variable "s3_tags" {
-  type = map(string)
+  type    = map(string)
   default = {}
 }
 variable "s3_bucket_role" {}
