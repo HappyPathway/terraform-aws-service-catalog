@@ -39,6 +39,7 @@ variable "launch_role_policy" {
   type = string
 }
 
+variable "principal_type" {}
 variable "principals" {
   type        = list(string)
   description = "List of principals to share this with"
